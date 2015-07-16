@@ -16,7 +16,7 @@ exports.getSteps = function(next) {
     
     var client = new fitbit(process.env.FITBIT_CONSUMER_KEY, process.env.FITBIT_CONSUMER_SECRET);
 
-    return client.requestResource('/activities/steps/date/today/1m.json', 'GET', process.env.FITBIT_OAUTH_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(results) {
+    return client.requestResource('/activities/steps/date/today/1m.json', 'GET', process.env.FITBIT_ACCESS_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(results) {
         if (results[1].statusCode != 200) {
             return next(new Error('Failed to retrieve Fitbit steps'));
         }
@@ -42,8 +42,8 @@ exports.getWeight = function(next) {
     }
     
     var client = new fitbit(process.env.FITBIT_CONSUMER_KEY, process.env.FITBIT_CONSUMER_SECRET);
-
-    return client.requestResource('/body/weight/date/today/1m.json', 'GET', process.env.FITBIT_OAUTH_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(results) {
+    
+    return client.requestResource('/body/weight/date/today/1m.json', 'GET', process.env.FITBIT_ACCESS_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(results) {
         if (results[1].statusCode != 200) {
             return next(new Error('Failed to retrieve Fitbit weight'));
         }
@@ -70,7 +70,7 @@ exports.getSleep = function(next) {
     
     var client = new fitbit(process.env.FITBIT_CONSUMER_KEY, process.env.FITBIT_CONSUMER_SECRET);
 
-    return client.requestResource('/sleep/minutesAsleep/date/today/1m.json', 'GET', process.env.FITBIT_OAUTH_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(results) {
+    return client.requestResource('/sleep/minutesAsleep/date/today/1m.json', 'GET', process.env.FITBIT_ACCESS_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(results) {
         if (results[1].statusCode != 200) {
             return next(new Error('Failed to retrieve Fitbit sleep'));
         }

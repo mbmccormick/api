@@ -2,6 +2,7 @@ var cache = require('memory-cache');
 
 var facebook = require('./facebook');
 var fitbit = require('./fitbit');
+var twitter = require('./twitter');
 
 module.exports = function(app, passport) {
 
@@ -19,15 +20,23 @@ module.exports = function(app, passport) {
         
     });
 
-    app.get('/v0/steps/', function(req, res, next) {
+    app.get('/v0/activity/steps/', function(req, res, next) {
 
         fitbit.getSteps(next).then(function(data) {                                        
 			res.json(data);
 		});
         
     });
+    
+    app.get('/v0/activity/sleep/', function(req, res, next) {
 
-    app.get('/v0/weight/', function(req, res, next) {
+        fitbit.getSleep(next).then(function(data) {                                        
+			res.json(data);
+		});
+        
+    });
+
+    app.get('/v0/body/weight/', function(req, res, next) {
 
         fitbit.getWeight(next).then(function(data) {                                        
 			res.json(data);
@@ -35,11 +44,17 @@ module.exports = function(app, passport) {
         
     });
     
-    app.get('/v0/sleep/', function(req, res, next) {
+    app.get('/v0/social/twitter/', function(req, res, next) {
 
-        fitbit.getSleep(next).then(function(data) {                                        
+        twitter.getTweets(next).then(function(data) {                                        
 			res.json(data);
 		});
+        
+    });
+    
+    app.get('/v0/body/github/', function(req, res, next) {
+
+        // TODO: do something
         
     });
     
