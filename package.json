@@ -1,0 +1,12 @@
+{
+    "name": "api",
+    "main": "server.js",
+    "dependencies": {
+        "express": "~4.12.3",
+        "morgan": "~1.5.2",
+		"q": "~1.4.1",
+        "memory-cache": "~0.1.4",
+        "fitbit-node": "~0.1.0",
+        "fb": "~0.7.0"
+    }
+}
