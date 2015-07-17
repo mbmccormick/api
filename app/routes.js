@@ -97,7 +97,7 @@ module.exports = function(app, passport) {
     
     app.use(function(req, res, next) {
         
-        res.status(404);
+        res.status(404).end();
 
     });
     
@@ -105,7 +105,7 @@ module.exports = function(app, passport) {
         
         console.error(error);
 
-        res.status(500);
+        res.status(500).end();
 
         next(error);
 
