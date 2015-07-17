@@ -15,10 +15,10 @@ exports.getTweets = function(next) {
     }
     
     var client = new twitter({
-        "consumerKey": process.env.TWITTER_CONSUMER_KEY,
-        "consumerSecret": process.env.TWITTER_CONSUMER_SECRET,
-        "accessToken": process.env.TWITTER_ACCESS_TOKEN,
-        "accessTokenSecret": process.env.TWITTER_TOKEN_SECRET
+        consumerKey: process.env.TWITTER_CONSUMER_KEY,
+        consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+        accessToken: process.env.TWITTER_ACCESS_TOKEN,
+        accessTokenSecret: process.env.TWITTER_TOKEN_SECRET
     });
     
     var deferred = q.defer();
@@ -28,7 +28,16 @@ exports.getTweets = function(next) {
     }, function(results) {
         var payload = JSON.parse(results);
         
-        var data = payload;
+        var data = [];
+        for (var i = 0; i < payload.length; i++)
+        {
+            var item = payload[i];            
+            
+            data.push({
+                dateTime: new Date(item['created_at']),
+                text: item['text']
+            });
+        }
         
         cache.put('twitter.getTweets', data, MAX_CACHE_AGE);
 

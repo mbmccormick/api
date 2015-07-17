@@ -23,8 +23,18 @@ exports.getSteps = function(next) {
 
         var payload = JSON.parse(results[0]);
         
-        var data = payload['activities-steps'];
-        data.reverse();
+        payload['activities-steps'].reverse();
+        
+        var data = [];
+        for (var i = 0; i < payload['activities-steps'].length; i++)
+        {
+            var item = payload['activities-steps'][i];            
+            
+            data.push({
+                date: item['dateTime'],
+                value: item['value']
+            });
+        }
         
         cache.put('fitbit.getSteps', data, MAX_CACHE_AGE);
 
@@ -50,8 +60,18 @@ exports.getWeight = function(next) {
 
         var payload = JSON.parse(results[0]);
         
-        var data = payload['body-weight'];
-        data.reverse();
+        payload['body-weight'].reverse();
+        
+        var data = [];
+        for (var i = 0; i < payload['body-weight'].length; i++)
+        {
+            var item = payload['body-weight'][i];            
+            
+            data.push({
+                date: item['dateTime'],
+                value: item['value']
+            });
+        }
         
         cache.put('fitbit.getWeight', data, MAX_CACHE_AGE);
 
@@ -77,8 +97,18 @@ exports.getSleep = function(next) {
 
         var payload = JSON.parse(results[0]);
         
-        var data = payload['sleep-minutesAsleep'];
-        data.reverse();
+        payload['sleep-minutesAsleep'].reverse();
+        
+        var data = [];
+        for (var i = 0; i < payload['sleep-minutesAsleep'].length; i++)
+        {
+            var item = payload['sleep-minutesAsleep'][i];            
+            
+            data.push({
+                date: item['dateTime'],
+                value: item['value']
+            });
+        }
         
         cache.put('fitbit.getSleep', data, MAX_CACHE_AGE);
 

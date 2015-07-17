@@ -1,0 +1,12 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 80px;
+}
+.container {
+  width: auto;
+  max-width: 800px;
+  padding: 0 15px;
+}

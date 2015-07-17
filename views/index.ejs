@@ -1,0 +1,186 @@
+<p>Here is the documentation for my Personal API. This project was originally inspired by <a href="http://api.naveen.com">api.naveen.com</a> a couple of years ago and I finally brought my own personal API to life, with help from <a href="https://api.github.com/repos/danfang/me-api">danfang/me-api</a>.
+
+<br />
+<br />
+
+<p>
+    <code>GET /v0/profile/</code> - My basic information from Facebook
+</p>
+<pre>
+{
+    "name": "Matt McCormick",
+    "gender": "male",
+    "bithdate": "1990-07-05",
+    "location": "Seattle, Washington",
+    "hometown": "Oxford, Michigan",
+    "relationship_status": "Married",
+    "significant_other": "Libby McCormick"
+}
+</pre>
+<br />
+
+<p>
+    <code>GET /v0/profile/education/</code> - My education history from Facebook
+</p>
+<pre>
+[
+    {
+        "type": "High School",
+        "school": "Lake Orion High School",
+        "year": "2008"
+    },
+    {
+        "type": "College",
+        "school": "Purdue University",
+        "year": "2012"
+    },
+    ...
+]
+</pre>
+<br />
+
+<p>
+    <code>GET /v0/profile/employment/</code> - My employment history from Facebook
+</p>
+<pre>
+[
+    {
+        "position": "Program Manager",
+        "employer": "Microsoft",
+        "location": "Redmond, Washington",
+        "start_date": "2013-02-28"
+    },
+    {
+        "position": "IT Networks & Telecommunications Programmer",
+        "employer": "Purdue University",
+        "location": "West Lafayette, Indiana",
+        "start_date": "2011-08-01",
+        "end_date": "2012-12-01"
+    },
+    ...
+]
+</pre>
+<br />
+
+<p>
+    <code>GET /v0/activity/steps/</code> - My step activity from Fitbit
+</p>
+<pre>
+[
+    {
+        "date": "2015-07-17",
+        "value": "6470"
+    },
+    {
+        "date": "2015-07-16",
+        "value": "10973"
+    },
+    ...
+]
+</pre>
+<br />
+
+<p>
+    <code>GET /v0/activity/sleep/</code> - My sleep time (in minutes) from Fitbit
+</p>
+<pre>
+[
+    {
+        "date": "2015-07-17",
+        "value": "426"
+    },
+    {
+        "date": "2015-07-16",
+        "value": "427"
+    },
+    ...
+]
+</pre>
+<br />
+
+<p>
+    <code>GET /v0/body/weight/</code> - My body weight (in kilograms) from Fitbit
+</p>
+<pre>
+[
+    {
+        "date": "2015-07-17",
+        "value": "64.25"
+    },
+    {
+        "date": "2015-07-16",
+        "value": "64.73"
+    },
+    ...
+]
+</pre>
+<br />
+
+<p>
+    <code>GET /v0/social/twitter/</code> - My recent tweets from Twitter
+</p>
+<pre>
+[
+    {
+        "dateTime": "2015-07-16T19:31:13.000Z",
+        "text": "@TillamookCheese To whom should I speak about getting my dollar back? :("
+    },
+    {
+        "dateTime": "2015-07-16T19:29:40.000Z",
+        "text": "@TillamookCheese Your yogurt machine put an extra label on the INSIDE of my yogurt container... http://t.co/0WeNejrgqP"
+    },
+    ...
+]
+</pre>
+<br />
+
+<p>
+    <code>GET /v0/social/github/</code> - My recent activity on GitHub
+</p>
+<pre>
+[
+    {
+        "dateTime": "2015-07-14T23:19:53.000Z",
+        "type": "WatchEvent",
+        "repo": {
+            "id": 11040071,
+            "name": "ahmetalpbalkan/personal-dashboard",
+            "url": "https://api.github.com/repos/ahmetalpbalkan/personal-dashboard"
+        },
+        "payload": {
+            "action": "started"
+        }
+    },
+    {
+        "dateTime": "2015-07-14T17:37:00.000Z",
+        "type": "PushEvent",
+        "repo": {
+            "id": 32908321,
+            "name": "mbmccormick/fitminder",
+            "url": "https://api.github.com/repos/mbmccormick/fitminder"
+        },
+        "payload": {
+            "push_id": 725624162,
+            "size": 1,
+            "distinct_size": 1,
+            "ref": "refs/heads/master",
+            "head": "8164f881c6be08eb0cfe06b779a611a6265861a9",
+            "before": "f606629586bb319757f32c0ce253febf98971509",
+            "commits": [
+                {
+                    "sha": "8164f881c6be08eb0cfe06b779a611a6265861a9",
+                    "author": {
+                        "email": "mbmccormick@outlook.com",
+                        "name": "Matt McCormick"
+                    },
+                    "message": "Update routes.js",
+                    "distinct": true,
+                    "url": "https://api.github.com/repos/mbmccormick/fitminder/commits/8164f881c6be08eb0cfe06b779a611a6265861a9"
+                }
+            ]
+        }
+    },
+    ...
+]
+</pre>
+<br />

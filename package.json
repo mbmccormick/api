@@ -4,10 +4,13 @@
     "dependencies": {
         "express": "~4.12.3",
         "morgan": "~1.5.2",
+        "ejs": "~2.3.1",
+        "express-partials": "~0.3.0",
 		"q": "~1.4.1",
         "memory-cache": "~0.1.4",
         "fitbit-node": "~0.1.0",
         "fb": "~0.7.0",
-        "twitter-node-client": "~0.0.6"
+        "twitter-node-client": "~0.0.6",
+        "github": "~0.2.4"
     }
 }
