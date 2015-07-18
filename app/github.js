@@ -34,8 +34,8 @@ exports.getActivity = function(next) {
             
             data.push({
                 dateTime: new Date(item['created_at']),
-                type: item['type'],
-                repo: item['repo'],
+                type: item['type'].replace('Event', ''),
+                repo: item['repo']['name'],
                 payload: item['payload']
             });
         }
