@@ -2,6 +2,7 @@ var cache = require('memory-cache');
 
 var facebook = require('./facebook');
 var fitbit = require('./fitbit');
+var strava = require('./strava');
 var twitter = require('./twitter');
 var github = require('./github');
 var blog = require('./blog');
@@ -67,6 +68,14 @@ module.exports = function(app, passport) {
     app.get('/v0/activity/sleep/', function(req, res, next) {
 
         fitbit.getSleep(next).then(function(data) {                                        
+            res.json(data);
+        });
+        
+    });
+    
+    app.get('/v0/activity/workouts/', function(req, res, next) {
+
+        strava.getActivities(next).then(function(data) {                                        
             res.json(data);
         });
         

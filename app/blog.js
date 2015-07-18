@@ -28,8 +28,6 @@ exports.getLatest = function(next) {
         {
             var item = payload[i];
             
-            // console.log(item);
-            
             data.push({
                 date: new Date(item['published']).toISOString().substr(0, 10),
                 title: item['title'],
