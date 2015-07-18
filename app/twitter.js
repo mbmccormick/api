@@ -25,13 +25,13 @@ exports.getTweets = function(next) {
     
     client.getUserTimeline({ screen_name: 'mbmccormick', count: 30, trim_user: true }, function(err, response, body) {
         deferred.reject(next(new Error('Failed to retrieve Twitter tweets')));
-    }, function(results) {
-        var payload = JSON.parse(results);
+    }, function(response) {
+        var payload = JSON.parse(response);
         
         var data = [];
         for (var i = 0; i < payload.length; i++)
         {
-            var item = payload[i];            
+            var item = payload[i];
             
             data.push({
                 dateTime: new Date(item['created_at']),

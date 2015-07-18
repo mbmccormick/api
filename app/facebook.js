@@ -18,12 +18,12 @@ exports.getProfile = function(next) {
     
     var deferred = q.defer();
     
-    facebook.api('me', function (results) {
-        if (!results || results.error) {
+    facebook.api('me', function (response) {
+        if (!response || response.error) {
             deferred.reject(next(new Error('Failed to retrieve Facebook profile')));
         }
         
-        var payload = results;
+        var payload = response;
         
         var data = {
             name: payload['name'],

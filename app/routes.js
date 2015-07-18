@@ -4,6 +4,7 @@ var facebook = require('./facebook');
 var fitbit = require('./fitbit');
 var twitter = require('./twitter');
 var github = require('./github');
+var blog = require('./blog');
 
 module.exports = function(app, passport) {
 
@@ -90,6 +91,14 @@ module.exports = function(app, passport) {
     app.get('/v0/social/github/', function(req, res, next) {
 
         github.getActivity(next).then(function(data) {                                        
+            res.json(data);
+        });
+        
+    });
+    
+    app.get('/v0/blog/', function(req, res, next) {
+
+        blog.getLatest(next).then(function(data) {                                        
             res.json(data);
         });
         
