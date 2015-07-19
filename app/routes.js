@@ -6,6 +6,7 @@ var strava = require('./strava');
 var twitter = require('./twitter');
 var github = require('./github');
 var blog = require('./blog');
+var automatic = require('./automatic');
 
 module.exports = function(app, passport) {
 
@@ -35,7 +36,7 @@ module.exports = function(app, passport) {
     
     app.get('/v0/profile/', function(req, res, next) {
 
-        facebook.getProfile(next).then(function(data) {                                        
+        facebook.getProfile(next).then(function(data) {
             res.json(data);
         });
         
@@ -43,7 +44,7 @@ module.exports = function(app, passport) {
     
     app.get('/v0/profile/education', function(req, res, next) {
 
-        facebook.getEducation(next).then(function(data) {                                        
+        facebook.getEducation(next).then(function(data) {
             res.json(data);
         });
         
@@ -51,7 +52,7 @@ module.exports = function(app, passport) {
     
     app.get('/v0/profile/employment', function(req, res, next) {
 
-        facebook.getEmployment(next).then(function(data) {                                        
+        facebook.getEmployment(next).then(function(data) {
             res.json(data);
         });
         
@@ -59,7 +60,7 @@ module.exports = function(app, passport) {
 
     app.get('/v0/activity/steps/', function(req, res, next) {
 
-        fitbit.getSteps(next).then(function(data) {                                        
+        fitbit.getSteps(next).then(function(data) {
             res.json(data);
         });
         
@@ -67,7 +68,7 @@ module.exports = function(app, passport) {
     
     app.get('/v0/activity/sleep/', function(req, res, next) {
 
-        fitbit.getSleep(next).then(function(data) {                                        
+        fitbit.getSleep(next).then(function(data) {
             res.json(data);
         });
         
@@ -75,7 +76,7 @@ module.exports = function(app, passport) {
     
     app.get('/v0/activity/workouts/', function(req, res, next) {
 
-        strava.getActivities(next).then(function(data) {                                        
+        strava.getActivities(next).then(function(data) {
             res.json(data);
         });
         
@@ -83,7 +84,7 @@ module.exports = function(app, passport) {
 
     app.get('/v0/body/weight/', function(req, res, next) {
 
-        fitbit.getWeight(next).then(function(data) {                                        
+        fitbit.getWeight(next).then(function(data) {
             res.json(data);
         });
         
@@ -91,7 +92,7 @@ module.exports = function(app, passport) {
     
     app.get('/v0/social/twitter/', function(req, res, next) {
 
-        twitter.getTweets(next).then(function(data) {                                        
+        twitter.getTweets(next).then(function(data) {
             res.json(data);
         });
         
@@ -99,7 +100,7 @@ module.exports = function(app, passport) {
     
     app.get('/v0/social/github/', function(req, res, next) {
 
-        github.getActivity(next).then(function(data) {                                        
+        github.getActivity(next).then(function(data) {
             res.json(data);
         });
         
@@ -107,7 +108,15 @@ module.exports = function(app, passport) {
     
     app.get('/v0/blog/', function(req, res, next) {
 
-        blog.getLatest(next).then(function(data) {                                        
+        blog.getLatest(next).then(function(data) {
+            res.json(data);
+        });
+        
+    });
+    
+    app.get('/v0/driving/', function(req, res, next) {
+
+        automatic.getTrips(next).then(function(data) {
             res.json(data);
         });
         
