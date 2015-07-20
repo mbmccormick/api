@@ -65,13 +65,13 @@ module.exports = function(app, passport) {
             
             function(callback) {
                 fitbit.getSteps(next).then(function(data) {
-                    callback(null, data[0]);
+                    callback(null, data[0]['value']);
                 });
             },
             
             function(callback) {
                 fitbit.getSleep(next).then(function(data) {
-                    callback(null, data[0]);
+                    callback(null, data[0]['value']);
                 });
             }
             
