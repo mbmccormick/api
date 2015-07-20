@@ -40,9 +40,9 @@ exports.getTrips = function(next) {
             data.push({
                 dateTime: new Date(item['start_time']),
                 duration: Math.floor((new Date(item['end_time']).getTime() - new Date(item['start_time']).getTime()) / 1000),
-                distance: item['distance_m'],
-                mpg: item['average_mpg'],
-                fuelConsumption: item['fuel_volume_gal'],
+                distance: Math.round(item['distance_m'] * 100) / 100,
+                mpg: Math.round(item['average_mpg'] * 100) / 100,
+                fuel_consumption: Math.round(item['fuel_volume_gal'] * 100) / 100,
                 hard_brakes: item['hard_brakes'],
                 hard_accelerations: item['hard_accels'],
             });
