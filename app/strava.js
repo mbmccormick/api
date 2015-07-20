@@ -3,7 +3,7 @@ var strava = require('strava-v3');
 var q = require('q');
 
 var cache = require('memory-cache');
-var MAX_CACHE_AGE = 24 * 60 * 1000; // 24 hours
+var MAX_CACHE_AGE = 60 * 1000; // 1 hour
 
 exports.getActivities = function(next) {
     

@@ -3,7 +3,7 @@ var automatic = require('automatic-api');
 var q = require('q');
 
 var cache = require('memory-cache');
-var MAX_CACHE_AGE = 3 * 60 * 1000; // 3 hours
+var MAX_CACHE_AGE = 60 * 1000; // 1 hour
 
 exports.getTrips = function(next) {
     

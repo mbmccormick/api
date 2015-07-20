@@ -1,4 +1,5 @@
 var cache = require('memory-cache');
+var async = require('async');
 
 var facebook = require('./facebook');
 var fitbit = require('./fitbit');
@@ -57,6 +58,35 @@ module.exports = function(app, passport) {
         });
         
     });
+    
+    app.get('/v0/activity/', function(req, res, next) {
+
+        async.parallel([
+            
+            function(callback) {
+                fitbit.getSteps(next).then(function(data) {
+                    callback(null, data[0]);
+                });
+            },
+            
+            function(callback) {
+                fitbit.getSleep(next).then(function(data) {
+                    callback(null, data[0]);
+                });
+            }
+            
+        ], function(err, results) {
+            if (err) {
+                next(err);
+            }
+        
+            res.json({
+                steps: results[0],
+                minutes_asleep: results[1]
+            });
+        });
+        
+    });
 
     app.get('/v0/activity/steps/', function(req, res, next) {
 
@@ -87,6 +117,12 @@ module.exports = function(app, passport) {
         fitbit.getWeight(next).then(function(data) {
             res.json(data);
         });
+        
+    });
+    
+    app.get('/v0/social/', function(req, res, next) {
+
+        // TODO: show social summary
         
     });
     

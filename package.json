@@ -8,6 +8,7 @@
         "express-partials": "~0.3.0",
 		"q": "~1.4.1",
         "memory-cache": "~0.1.4",
+        "async": "~1.4.0",
         "fb": "~0.7.0",
         "fitbit-node": "~0.1.0",
         "strava-v3": "~1.8.0",
