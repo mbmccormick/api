@@ -64,14 +64,14 @@ module.exports = function(app, passport) {
         async.parallel([
             
             function(callback) {
-                fitbit.getSteps(next).then(function(data) {
-                    callback(null, data[0]['value']);
+                fitbit.getStepsSummary(next).then(function(data) {
+                    callback(null, data);
                 });
             },
             
             function(callback) {
-                fitbit.getSleep(next).then(function(data) {
-                    callback(null, data[0]['value']);
+                fitbit.getSleepSummary(next).then(function(data) {
+                    callback(null, data);
                 });
             }
             
@@ -82,7 +82,7 @@ module.exports = function(app, passport) {
         
             res.json({
                 steps: results[0],
-                minutes_asleep: results[1]
+                sleep: results[1]
             });
         });
         
@@ -122,7 +122,30 @@ module.exports = function(app, passport) {
     
     app.get('/v0/social/', function(req, res, next) {
 
-        // TODO: show social summary
+        async.parallel([
+            
+            function(callback) {
+                twitter.getTweetsSummary(next).then(function(data) {
+                    callback(null, data);
+                });
+            },
+            
+            function(callback) {
+                github.getActivitySummary(next).then(function(data) {
+                    callback(null, data);
+                });
+            }
+            
+        ], function(err, results) {
+            if (err) {
+                next(err);
+            }
+        
+            res.json({
+                twitter: results[0],
+                github: results[1]
+            });
+        });
         
     });
     

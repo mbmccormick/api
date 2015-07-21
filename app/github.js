@@ -47,3 +47,40 @@ exports.getActivity = function(next) {
     
     return deferred.promise;
 }
+
+exports.getActivitySummary = function(next) {
+    
+    var cachedResult = cache.get('github.getActivitySummary');
+    if (cachedResult) {
+        return q.fcall(function() {
+            return cachedResult;
+        });
+    }
+    
+    var client = new github({
+        version: "3.0.0"
+    });
+    
+    var deferred = q.defer();
+    
+    client.user.get({ user: 'mbmccormick' }, function(err, response) {
+        if (err) {
+            deferred.reject(next(new Error('Failed to retrieve GitHub activity summary')));
+        }
+        
+        var payload = response;
+        
+        var data = {
+            followers: payload['followers'],
+            following: payload['following'],
+            repos: payload['public_repos'],
+            gists: payload['public_gists']
+        };
+        
+        cache.put('github.getActivitySummary', data, MAX_CACHE_AGE);
+
+        deferred.resolve(data);
+    });
+    
+    return deferred.promise;
+}

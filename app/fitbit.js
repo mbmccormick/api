@@ -42,6 +42,35 @@ exports.getSteps = function(next) {
     });
 }
 
+exports.getStepsSummary = function(next) {
+    
+    var cachedResult = cache.get('fitbit.getStepsSummary');
+    if (cachedResult) {
+        return q.fcall(function() {
+            return cachedResult;
+        });
+    }
+    
+    var client = new fitbit(process.env.FITBIT_CONSUMER_KEY, process.env.FITBIT_CONSUMER_SECRET);
+
+    return client.requestResource('/activities/date/today.json', 'GET', process.env.FITBIT_ACCESS_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(response) {
+        if (response[1].statusCode != 200) {
+            return next(new Error('Failed to retrieve Fitbit steps summary'));
+        }
+
+        var payload = JSON.parse(response[0]);
+        
+        var data = {
+            step_goal: payload['goals']['steps'],
+            steps: payload['summary']['steps']
+        };
+        
+        cache.put('fitbit.getStepsSummary', data, MAX_CACHE_AGE);
+
+        return data;
+    });
+}
+
 exports.getSleep = function(next) {
     
     var cachedResult = cache.get('fitbit.getSleep');
@@ -74,6 +103,35 @@ exports.getSleep = function(next) {
         }
         
         cache.put('fitbit.getSleep', data, MAX_CACHE_AGE);
+
+        return data;
+    });
+}
+
+exports.getSleepSummary = function(next) {
+    
+    var cachedResult = cache.get('fitbit.getSleepSummary');
+    if (cachedResult) {
+        return q.fcall(function() {
+            return cachedResult;
+        });
+    }
+    
+    var client = new fitbit(process.env.FITBIT_CONSUMER_KEY, process.env.FITBIT_CONSUMER_SECRET);
+
+    return client.requestResource('/sleep/date/today.json', 'GET', process.env.FITBIT_ACCESS_TOKEN, process.env.FITBIT_TOKEN_SECRET).then(function(response) {
+        if (response[1].statusCode != 200) {
+            return next(new Error('Failed to retrieve Fitbit sleep summary'));
+        }
+
+        var payload = JSON.parse(response[0]);
+        
+        var data = {
+            sleeps: payload['summary']['totalSleepRecords'],
+            minutes_asleep: payload['summary']['totalMinutesAsleep']
+        };
+        
+        cache.put('fitbit.getSleepSummary', data, MAX_CACHE_AGE);
 
         return data;
     });
