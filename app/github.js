@@ -63,7 +63,7 @@ exports.getActivitySummary = function(next) {
     
     var deferred = q.defer();
     
-    client.user.get({ user: 'mbmccormick' }, function(err, response) {
+    client.users.get({ user: 'mbmccormick' }, function(err, response) {
         if (err) {
             deferred.reject(next(new Error('Failed to retrieve GitHub activity summary')));
         }
