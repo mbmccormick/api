@@ -1,11 +1,8 @@
 <p>Here is the documentation for my Personal API. This project was originally inspired by <a href="http://api.naveen.com">api.naveen.com</a> a couple of years ago and I finally brought my own personal API to life. The application itself is built on node.js and hosted on Heroku. You can view the <a href="http://github.com/mbmccormick/api">source code</a> on GitHub.
 
-<br />
-<br />
+<div class="spacer spacer-sm"></div>
 
-<p>
-    <code>GET /v0/profile/</code> - My basic information from Facebook
-</p>
+<p><code>GET /v0/profile/</code> - My basic information from Facebook</p>
 <pre>
 {
     "name": "Matt McCormick",
@@ -17,11 +14,10 @@
     "significant_other": "Libby McCormick"
 }
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/profile/education/</code> - My education history from Facebook
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/profile/education/</code> - My education history from Facebook</p>
 <pre>
 [
     {
@@ -37,11 +33,10 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/profile/employment/</code> - My employment history from Facebook
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/profile/employment/</code> - My employment history from Facebook</p>
 <pre>
 [
     {
@@ -60,11 +55,26 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/activity/steps/</code> - My step activity from Fitbit
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/activity/</code> - Summary of my recent activity from Fitbit</p>
+<pre>
+{
+    "steps": {
+        "step_goal": 10000,
+        "steps": 883
+    },
+    "sleep": {
+        "sleeps": 1,
+        "minutes_asleep": 418
+    }
+}
+</pre>
+
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/activity/steps/</code> - My step activity from Fitbit</p>
 <pre>
 [
     {
@@ -78,11 +88,10 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/activity/sleep/</code> - My sleep time (in minutes) from Fitbit
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/activity/sleep/</code> - My sleep time (in minutes) from Fitbit</p>
 <pre>
 [
     {
@@ -96,11 +105,10 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/activity/workouts/</code> - My latest workouts (in meters and seconds) from Strava
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/activity/workouts/</code> - My latest workouts (in meters and seconds) from Strava</p>
 <pre>
 [
     {
@@ -120,11 +128,10 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/body/weight/</code> - My body weight (in kilograms) from Fitbit
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/body/weight/</code> - My body weight (in kilograms) from Fitbit</p>
 <pre>
 [
     {
@@ -138,11 +145,30 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/social/twitter/</code> - My recent tweets from Twitter
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/social/</code> - Summary of my recent activity from Twitter and GitHub</p>
+<pre>
+{
+    "twitter": {
+        "tweets": 7960,
+        "followers": 425,
+        "following": 653,
+        "favorited": 1998
+    },
+    "github": {
+        "followers": 47,
+        "following": 54,
+        "repos": 92,
+        "gists": 98
+    }
+}
+</pre>
+
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/social/twitter/</code> - My recent tweets from Twitter</p>
 <pre>
 [
     {
@@ -156,11 +182,10 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/social/github/</code> - My recent activity on GitHub
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/social/github/</code> - My recent activity on GitHub</p>
 <pre>
 [
     {
@@ -199,11 +224,10 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/blog/</code> - My recent blog posts
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/blog/</code> - My recent blog posts</p>
 <pre>
 [
     {
@@ -219,11 +243,10 @@
     ...
 ]
 </pre>
-<br />
 
-<p>
-    <code>GET /v0/driving/</code> - My driving history (in seconds, meters, and gallons) from Automatic
-</p>
+<div class="spacer spacer-sm"></div>
+
+<p><code>GET /v0/driving/</code> - My driving history (in seconds, meters, and gallons) from Automatic</p>
 <pre>
 [
     {
@@ -247,4 +270,3 @@
     ...
 ]
 </pre>
-<br />
