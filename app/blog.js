@@ -16,7 +16,7 @@ exports.getLatest = function(next) {
     
     var deferred = q.defer();
     
-    rss('http://mbmccormick.com/feed', function(err, response) {
+    rss('http://mbmccormick.com/rss/', function(err, response) {
         if (err) {
             deferred.reject(next(new Error('Failed to retrieve Blog posts')));
         }
