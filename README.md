@@ -1,6 +1,6 @@
 # Personal API
 
-Here is the documentation for my Personal API. This project was originally inspired by [api.naveen.com](http://api.naveen.com) a couple of years ago and I finally brought my own personal API to life. The application itself is built on node.js and hosted on Heroku. You can view the [source code](http://github.com/mbmccormick/api) on GitHub.
+Welcome to the documentation for my Personal API! For more information on how this works, check out my [blog post](http://mbmccormick.com/personal-api/). You can also view the [source code](http://github.com/mbmccormick/api) on GitHub.
 
 ## Resources
 
@@ -251,11 +251,9 @@ This Personal API project can be deployed to pretty much any cloud hosting provi
 
 `FITBIT_ACCESS_TOKEN` - Fitbit.com Access Token
 
-`FITBIT_CONSUMER_KEY` - Fitbit.com Consumer Key
+`FITBIT_CLIENT_ID` - Fitbit.com Client ID
 
-`FITBIT_CONSUMER_SECRET` - Fitbit.com Consumer Secret
-
-`FITBIT_TOKEN_SECRET` - Fitbit.com Token Secret
+`FITBIT_CLIENT_SECRET` - Fitbit.com Client Secret
 
 `STRAVA_ACCESS_TOKEN` - Strava.com Access Token
 
@@ -267,7 +265,7 @@ This Personal API project can be deployed to pretty much any cloud hosting provi
 
 `TWITTER_TOKEN_SECRET` - Twitter.com Token Secret
 
-And any other configuration settings defined in the modules in the `/app` folder of the project.
+And any other configuration settings are defined in the modules in the `/app` folder of the project.
 
 
 ## Availability
