@@ -25,12 +25,12 @@ exports.getTrips = function(next) {
     
     var deferred = q.defer();
     
-    client.roundtrip('GET', '/trips', null, function(err, response) {
+    client.roundtrip('GET', '/trip/?limit=30', null, function(err, response) {
         if (err) {
             deferred.reject(next(new Error('Failed to retrieve Automatic trips')));
         }
         
-        var payload = response;
+        var payload = response.results;
         
         var data = [];
         for (var i = 0; i < (payload.length < 30 ? payload.length : 30); i++)
@@ -38,11 +38,11 @@ exports.getTrips = function(next) {
             var item = payload[i];
             
             data.push({
-                dateTime: new Date(item['start_time']),
-                duration: Math.floor((new Date(item['end_time']).getTime() - new Date(item['start_time']).getTime()) / 1000),
+                dateTime: new Date(item['started_at']),
+                duration: Math.round(item['duration_s'] * 100) / 100,
                 distance: Math.round(item['distance_m'] * 100) / 100,
-                mpg: Math.round(item['average_mpg'] * 100) / 100,
-                fuel_consumption: Math.round(item['fuel_volume_gal'] * 100) / 100,
+                mpg: Math.round(item['average_kmpl'] * 2.82485876 * 100) / 100,
+                fuel_consumption: Math.round(item['fuel_volume_l'] * 3.78541178 * 100) / 100,
                 hard_brakes: item['hard_brakes'],
                 hard_accelerations: item['hard_accels'],
             });
