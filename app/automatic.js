@@ -33,7 +33,7 @@ exports.getTrips = function(next) {
                 duration: Math.round(item['duration_s'] * 100) / 100,
                 distance: Math.round(item['distance_m'] * 100) / 100,
                 mpg: Math.round(item['average_kmpl'] * 2.82485876 * 100) / 100,
-                fuel_consumption: Math.round(item['fuel_volume_l'] * 3.78541178 * 100) / 100,
+                fuel_consumption: Math.round(item['fuel_volume_l'] * 0.26417205 * 100) / 100,
                 hard_brakes: item['hard_brakes'],
                 hard_accelerations: item['hard_accels'],
             });
