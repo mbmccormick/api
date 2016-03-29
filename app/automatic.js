@@ -1,4 +1,4 @@
-var automatic = require('automatic-api');
+var automatic = require('automatic-node-oauth2');
 
 var q = require('q');
 
@@ -14,23 +14,14 @@ exports.getTrips = function(next) {
         });
     }
     
-    var client = new automatic.AutomaticAPI({
-        clientID: process.env.AUTOMATIC_CONSUMER_KEY,
-        clientSecret: process.env.AUTOMATIC_CONSUMER_SECRET
-    });
+    var client = new automatic(process.env.AUTOMATIC_CONSUMER_KEY, process.env.AUTOMATIC_CONSUMER_SECRET);
     
-    client.setState({
-        accessToken: process.env.AUTOMATIC_ACCESS_TOKEN
-    });
-    
-    var deferred = q.defer();
-    
-    client.roundtrip('GET', '/trip/?limit=30', null, function(err, response) {
-        if (err) {
+    return client.get('/trip/?limit=30', process.env.AUTOMATIC_ACCESS_TOKEN).then(function(response) {
+        if (response[1].statusCode != 200) {
             deferred.reject(next(new Error('Failed to retrieve Automatic trips')));
         }
         
-        var payload = response.results;
+        var payload = response[0].results;
         
         var data = [];
         for (var i = 0; i < (payload.length < 30 ? payload.length : 30); i++)
@@ -50,8 +41,6 @@ exports.getTrips = function(next) {
         
         cache.put('automatic.getTrips', data, MAX_CACHE_AGE);
 
-        deferred.resolve(data);
+        return data;
     });
-    
-    return deferred.promise;
 }

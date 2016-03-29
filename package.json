@@ -15,6 +15,6 @@
         "twitter-node-client": "~0.0.6",
         "github": "~0.2.4",
         "feed-read": "~0.0.1",
-        "automatic-api": "~0.9.4"
+        "automatic-node-oauth2": "~1.0.1"
     }
 }
