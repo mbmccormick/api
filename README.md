@@ -218,9 +218,9 @@ Welcome to the documentation for my Personal API! For more information on how th
         {
             "dateTime": "2015-07-19T03:38:29.752Z",
             "duration": 689,
-            "distance": 7016.77783203125,
-            "mpg": 18.885939906364165,
-            "fuelConsumption": 0.230861395597458,
+            "distance": 7016.8,
+            "mpg": 18.89,
+            "fuelConsumption": 0.23,
             "hard_brakes": 0,
             "hard_accelerations": 0
         },
@@ -228,8 +228,8 @@ Welcome to the documentation for my Personal API! For more information on how th
             "dateTime": "2015-07-19T01:45:59.606Z",
             "duration": 1652,
             "distance": 18006.5,
-            "mpg": 20.44223156805237,
-            "fuelConsumption": 0.547334969043732,
+            "mpg": 20.44,
+            "fuelConsumption": 0.55,
             "hard_brakes": 0,
             "hard_accelerations": 0
         },
