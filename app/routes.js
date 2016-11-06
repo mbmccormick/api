@@ -1,12 +1,10 @@
 var cache = require('memory-cache');
 var async = require('async');
 
-var facebook = require('./facebook');
 var fitbit = require('./fitbit');
 var strava = require('./strava');
 var twitter = require('./twitter');
 var github = require('./github');
-var blog = require('./blog');
 var automatic = require('./automatic');
 
 module.exports = function(app, passport) {
@@ -31,30 +29,6 @@ module.exports = function(app, passport) {
                 versions: process.versions,
                 memoryUsage: process.memoryUsage()
             }
-        });
-        
-    });
-    
-    app.get('/v0/profile/', function(req, res, next) {
-
-        facebook.getProfile(next).then(function(data) {
-            res.json(data);
-        });
-        
-    });
-    
-    app.get('/v0/profile/education', function(req, res, next) {
-
-        facebook.getEducation(next).then(function(data) {
-            res.json(data);
-        });
-        
-    });
-    
-    app.get('/v0/profile/employment', function(req, res, next) {
-
-        facebook.getEmployment(next).then(function(data) {
-            res.json(data);
         });
         
     });
@@ -160,14 +134,6 @@ module.exports = function(app, passport) {
     app.get('/v0/social/github/', function(req, res, next) {
 
         github.getActivity(next).then(function(data) {
-            res.json(data);
-        });
-        
-    });
-    
-    app.get('/v0/blog/', function(req, res, next) {
-
-        blog.getLatest(next).then(function(data) {
             res.json(data);
         });
         
